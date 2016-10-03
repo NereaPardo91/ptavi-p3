@@ -33,11 +33,13 @@ class SmallSMILHandler(ContentHandler):
     def startElement(self, name, attrs): 
 
         if name == 'root-layout':
+
             self.width = attrs.get('width',"")
             self.height = attrs.get('height',"")
             self.backgroundcolor = attrs.get('backgroundcolor',"")
             atrib = {'width' : self.width, 'height' : self.height, 'backgroundcolor' : self.backgroundcolor}
-            self.etiquetas.append([name, atrib])
+            atrib['tag'] = name
+            self.etiquetas.append(atrib)
             #print(self.etiquetas)
         elif name == 'region':
             self.id = attrs.get('id',"")
@@ -46,7 +48,8 @@ class SmallSMILHandler(ContentHandler):
             self.right = attrs.get('right',"")
             self.left = attrs.get('left',"")
             atrib = {'id' : self.id, 'top' : self.top, 'bottom' : self.bottom, 'right' : self.right, 'left' : self.left}
-            self.etiquetas.append([name, atrib])
+            atrib['tag'] = name
+            self.etiquetas.append(atrib)
             #print(self.etiquetas)
         elif name == 'img':
             self.i_src = attrs.get('src',"")
@@ -54,20 +57,23 @@ class SmallSMILHandler(ContentHandler):
             self.i_begin = attrs.get('begin',"")
             self.i_dur = attrs.get('dur',"")
             atrib = {'src' : self.i_src, 'region' : self.i_region, 'begin' : self.i_begin, 'dur' : self.i_dur}
-            self.etiquetas.append([name, atrib])
+            atrib['tag'] = name
+            self.etiquetas.append(atrib)
             #print(self.etiquetas)
         elif name == 'audio':
             self.a_src = attrs.get('src',"")
             self.a_begin = attrs.get('begin',"")
             self.a_dur = attrs.get('dur',"")
             atrib = {'src' : self.a_src, 'begin' : self.a_begin, 'dur' : self.a_dur}
-            self.etiquetas.append([name, atrib])
+            atrib['tag'] = name
+            self.etiquetas.append(atrib)
             #print(self.etiquetas)
         elif name == 'textstream':
             self.t_src = attrs.get('src',"")
-            self.t_region = attrs.get('region',"")
+            self.t_region = attrs.get('region',"")          
             atrib = {'src' : self.t_src, 'region' : self.t_region}
-            self.etiquetas.append([name, atrib])
+            atrib['tag'] = name
+            self.etiquetas.append(atrib)
             #print(self.etiquetas)
 
 
@@ -81,8 +87,7 @@ if __name__ == "__main__":
         sHandler = SmallSMILHandler()
         parser.setContentHandler(sHandler)
         parser.parse(open('karaoke.smil'))
-        print(str(sHandler.get_tags()) + "/n")
-
+        print(sHandler.get_tags())
 
 
 
