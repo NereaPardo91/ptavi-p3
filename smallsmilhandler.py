@@ -33,7 +33,6 @@ class SmallSMILHandler(ContentHandler):
     def startElement(self, name, attrs): 
 
         if name == 'root-layout':
-
             self.width = attrs.get('width',"")
             self.height = attrs.get('height',"")
             self.backgroundcolor = attrs.get('backgroundcolor',"")
