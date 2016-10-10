@@ -6,14 +6,12 @@ from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
 
-
-
-
 if __name__ == "__main__":
 
 	parser = make_parser()
 	sHandler = SmallSMILHandler()
 	parser.setContentHandler(sHandler)
+
 	try:
 		fichero = sys.argv[1]
 
@@ -22,7 +20,15 @@ if __name__ == "__main__":
 
 	parser.parse(open(fichero))
 	misDatos = sHandler.get_tags()
-	print(misDatos)
+
+	for elem in misDatos:
+		print(elem)
+
+		
+
+
+	
+
 
 
    
