@@ -20,23 +20,13 @@ if __name__ == "__main__":
 
 	parser.parse(open(fichero))
 	misDatos = sHandler.get_tags()
-	salida = ""
 
 	for elems in misDatos:
 		etiq = elems['tag']  #cojo mi etiqueta tag para que sea lo primero que se imprime
 		del elems['tag']	#borro tag de mi dicc para que no se repita al final
-		salida = (etiq +'\t')
+		text = (etiq +'\t')
 		for atributos in elems:
-			salida = salida+ '\t' + atributos + '= "' + elems[atributos] + '"' +'\t'
-		print(salida)
+			text = text+ '\t' + atributos + '= "' + elems[atributos] + '"' +'\t'
+		print(text)
 
-
-
-		
-
-
-	
-
-
-
-   
+	 
