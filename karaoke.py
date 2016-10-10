@@ -24,9 +24,10 @@ if __name__ == "__main__":
 
 	for elems in misDatos:
 		etiq = elems['tag']
-		salida = (etiq+'\t')
+		del elems['tag']
+		salida = (etiq +'\t')
 		for atributos in elems:
-			salida = salida+atributos+"="+elems[atributos]+'\t'
+			salida = salida+ '\t' + atributos + '= "' + elems[atributos] + '"' +'\t'
 		print(salida)
 
 
