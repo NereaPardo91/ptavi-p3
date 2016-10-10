@@ -20,9 +20,16 @@ if __name__ == "__main__":
 
 	parser.parse(open(fichero))
 	misDatos = sHandler.get_tags()
+	salida = ""
 
-	for elem in misDatos:
-		print(elem)
+	for elems in misDatos:
+		etiq = elems['tag']
+		salida = (etiq+'\t')
+		for atributos in elems:
+			salida = salida+atributos+"="+elems[atributos]+'\t'
+		print(salida)
+
+
 
 		
 
