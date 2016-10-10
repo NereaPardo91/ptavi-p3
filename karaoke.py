@@ -23,8 +23,8 @@ if __name__ == "__main__":
 	salida = ""
 
 	for elems in misDatos:
-		etiq = elems['tag']
-		del elems['tag']
+		etiq = elems['tag']  #cojo mi etiqueta tag para que sea lo primero que se imprime
+		del elems['tag']	#borro tag de mi dicc para que no se repita al final
 		salida = (etiq +'\t')
 		for atributos in elems:
 			salida = salida+ '\t' + atributos + '= "' + elems[atributos] + '"' +'\t'
