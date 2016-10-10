@@ -19,7 +19,6 @@ class karaokeLocal():
 	def __str__(self):
 		for elems in self.misDatos:
 			etiq = elems['tag']  #cojo mi etiqueta tag para que sea lo primero que se imprime
-			del elems['tag']	#borro tag de mi dicc para que no se repita al final
 			text = (etiq +'\t')
 
 			for atributos in elems:
@@ -49,7 +48,7 @@ if __name__ == "__main__":
 	
 	karaoke.init(fichero)
 	karaoke.__str__()
-	karaoke.to_json(sys.argv[1])
+	karaoke.to_json(fichero)
 	karaoke.do_local()
 	karaoke.to_json('local')
 	karaoke.__str__()
